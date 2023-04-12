@@ -62,7 +62,6 @@ public class ProductController {
 		productRepo.deleteById(pId);
 		model.addAttribute("msg", "Product Deleted");
 		List<ProductEntity> allProducts = productRepo.findAll();
-
 		model.addAttribute("products", allProducts);
 		
 		return "view";
@@ -72,8 +71,10 @@ public class ProductController {
 	public String modifyProduct(@RequestParam("productId") Integer pId, Model model) {
 		
 		Optional<ProductEntity> findModifyRecord = productRepo.findById(pId);
-		model.addAttribute("product", findModifyRecord);
-		System.out.println("model : " + model);
+		if(findModifyRecord.isPresent()) {
+			ProductEntity productEntity = findModifyRecord.get();
+			model.addAttribute("product", productEntity);
+		}
 		return "index";
 	}
 
