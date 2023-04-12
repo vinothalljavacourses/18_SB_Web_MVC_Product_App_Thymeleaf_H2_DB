@@ -35,7 +35,10 @@
 				    <td th:text="${product.quantity}" />
 				    <td>
 				       <a th:href="@{/deleteProduct?(productId=${product.productId})}" 
-				          class="btn btn-danger" onclick="return deleteConfirm()">Delete</a></td>
+				          class="btn btn-info" onclick="return deleteConfirm()">Delete</a>
+				       <a th:href="@{/modifyProduct?(productId=${product.productId})}" 
+				          class="btn btn-warning">Modify</a>
+				   </td>
 			   </tr>
 			   <tr>
 			    <td th:if="${products == null or products.empty}" colspan="5" class="text-center"> No Records Found</td>
